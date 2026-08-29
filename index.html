@@ -4,78 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Josiane Uwumukiza</title>
+  <meta name="color-scheme" content="dark light">
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      try {
+        var t = localStorage.getItem('ju-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="ambient" aria-hidden="true">
+    <span class="bloom bloom-a"></span>
+    <span class="bloom bloom-b"></span>
+    <span class="bloom bloom-c"></span>
+  </div>
+  <canvas id="scene" class="scene" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
   <header class="site-header">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#research">Research</a>
-      <a href="#creative">Creative</a>
+    <nav class="nav glass" aria-label="Main navigation">
+      <a href="#about" class="nav-brand">Josiane Uwumukiza</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
+        <a href="#creative">Creative</a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+          <circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/>
+        </svg>
+      </button>
     </nav>
   </header>
 
   <main>
     <section id="about" class="intro">
-      <h1 class="name">Josiane Uwumukiza</h1>
       <div class="intro-grid">
-        <div class="bio-block">
-          <p>I am a Computer Science student at <a href="https://wellesley.edu">Wellesley College</a> (BA expected May 2026) and an undergraduate researcher at MIT's <a href="https://ascl.mit.edu">Astrodynamics, Space Robotics, and Controls Lab (ARCLab)</a>. My research interests lie at the intersection of 3D computer vision, representation learning, and autonomous systems.</p>
-          <p>My current undergraduate thesis focuses on using 3D reconstructed spacecraft objects in their pose estimation. I work with DINOv3 for 2D features, DGCNN for 3D encoding, and Hunyuan3D-2 for reconstruction. I am also collaborating with the Conformable Decoders group at <a href="https://www.media.mit.edu/groups/conformable-decoders/updates/">MIT Media Lab</a> on AI-driven ultrasound image analysis and its integration with wearable systems.</p>
+        <div class="bio-block reveal">
+          <h1 class="name">Josiane Uwumukiza</h1>
+          <p>I am a recent Computer Science graduate of <a href="https://wellesley.edu">Wellesley College</a>, with Computer Science Departmental Honors. Since January 2025 I have worked with MIT's <a href="https://ascl.mit.edu">Astrodynamics, Space Robotics, and Controls Laboratory (ARCLab)</a> on computer vision for space applications, where I worked on satellite and asteroid 3D reconstruction and satellite 6-DoF monocular pose estimation. My senior honors thesis: <em>Investigating 6-DoF Pose Estimation of Unknown Spacecraft via Generative 3D Reconstruction</em>.</p>
+          <p>I also work with the Conformable Decoders group at the <a href="https://www.media.mit.edu/groups/conformable-decoders/updates/">MIT Media Lab</a> on wearable ultrasound tumor analysis with agentic LLM reasoning, and I spent summer 2025 as a software engineering intern with Microsoft AI.</p>
+          <p class="interests"><span class="interests-label">Research interests</span> Computer vision · 3D vision · Geometric deep learning · Multimodal systems · Autonomous navigation</p>
+          <ul class="link-line" aria-label="Contact and profiles">
+            <li><a class="chip glass" href="mailto:ju100@wellesley.edu">Email</a></li>
+            <li><a class="chip glass" href="https://linkedin.com/in/josiane-uwumukiza" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a class="chip glass" href="https://iamjosianeuwumukiza.com" target="_blank" rel="noopener noreferrer">Engineering portfolio</a></li>
+            <li><a class="chip glass" href="https://github.com/JosianeUwumukiza" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a class="chip glass" href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a></li>
+          </ul>
         </div>
-        <div class="photo-block">
-          <img src="photo.jpeg" alt="Josiane Uwumukiza" class="photo" width="240" height="240" onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';">
-          <div id="photo-placeholder" class="photo photo-placeholder" style="display: none;" aria-hidden="true">
-            <span>Add <code>photo.jpg</code> or <code>photo.jpeg</code> here</span>
+        <div class="photo-block reveal">
+          <div class="photo-frame glass">
+            <img src="photo.jpeg" alt="Josiane Uwumukiza" class="photo" width="240" height="240" onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';">
+            <div id="photo-placeholder" class="photo photo-placeholder" style="display: none;" aria-hidden="true">
+              <span>Add <code>photo.jpeg</code> here</span>
+            </div>
           </div>
         </div>
       </div>
-      <p class="link-line">
-        <a href="mailto:josianeu@mit.edu">Email</a> / <a href="https://linkedin.com/in/josiane-uwumukiza" target="_blank" rel="noopener noreferrer">LinkedIn</a> / <a href="https://iamjosianeuwumukiza.com" target="_blank" rel="noopener noreferrer">Engineering portfolio</a> / <a href="https://github.com/JosianeUwumukiza" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-      </p>
     </section>
 
-    <section id="news" class="section">
-      <h2 class="section-title">Recent News</h2>
-      <ul class="news-list">
-        <li><span class="news-date">[Aug 2025]</span> Co-first author on <strong>DreamSat-2.0</strong> at AAS/AIAA Astrodynamics Specialist Conference.</li>
-        <li><span class="news-date">[Nov 2024]</span> Poster presentation at ABCRMS: <em>Understanding Genomic Integrity in Triple Negative Breast Cancer Cells</em> (with F. Menghi, R. Straub, E. T. Liu).</li>
-        <li><span class="news-date">[Aug 2024]</span> Oral presentation at HuBMAP symposium: <em>Podocount: Utilizing AI and Computer Vision to analyse histopathology images</em> (with A. Naglah, P. Sarder). <a href="https://www.youtube.com/watch?v=-wxJ_kZCuOA&t=795s" target="_blank" rel="noopener noreferrer">Video</a></li>
-        <li><span class="news-date">[Apr 2024]</span> Oral presentation at Ruhlman Conference, Wellesley College: <em>Investigating the Properties and Characteristics of Antimicrobial Peptides</em>.</li>
-        <li><span class="news-date">[Jan 2024]</span> Poster at Harvard NCRC: <em>Understanding Genomic Integrity in Triple Negative Breast Cancer Cells</em>.</li>
-      </ul>
+    <section id="news" class="section reveal">
+      <h2 class="section-title">Recent news</h2>
+      <ol class="rows glass">
+        <li><time class="row-date" datetime="2026-07">Jul 2026</time><span class="row-body"><a href="https://dreamsatpose.github.io/" target="_blank" rel="noopener noreferrer"><strong>DreamSat-Pose</strong></a> accepted at the AAS/AIAA Astrodynamics Specialist Conference: spacecraft pose estimation from single-view 3D reconstructions and learned 2D–3D feature matching.</span></li>
+        <li><time class="row-date" datetime="2026-05">May 2026</time><span class="row-body">Graduated from Wellesley College with a BA in Computer Science and Departmental Honors.</span></li>
+        <li><time class="row-date" datetime="2026-01">Jan 2026</time><span class="row-body">Joined the Conformable Decoders group at MIT Media Lab to work on wearable ultrasound tumor analysis and agentic AI.</span></li>
+        <li><time class="row-date" datetime="2025-08">Aug 2025</time><span class="row-body">Co-first author on <strong>DreamSat-2.0</strong> at the AAS/AIAA Astrodynamics Specialist Conference.</span></li>
+        <li><time class="row-date" datetime="2025-05">May 2025</time><span class="row-body">Software engineering intern with Microsoft AI in Redmond, building LLM-powered ad-relevance evaluation for Microsoft Advertising.</span></li>
+        <li><time class="row-date" datetime="2024-11">Nov 2024</time><span class="row-body">Poster at the ABCRMS national conference; awarded the NIH HuBMAP Underrepresented Student Internship Extension fellowship and a Wellesley Conference Travel Grant.</span></li>
+        <li><time class="row-date" datetime="2024-08">Aug 2024</time><span class="row-body">Oral presentation at the HuBMAP 2024 symposium (<a href="https://www.youtube.com/watch?v=-wxJ_kZCuOA&t=795s" target="_blank" rel="noopener noreferrer">video</a>); selected for the D. E. Shaw Research Undergraduate &amp; Master's Fellowship.</span></li>
+        <li><time class="row-date" datetime="2024-04">Apr 2024</time><span class="row-body">Oral presentation at the 28th Ruhlman Conference, Wellesley College.</span></li>
+        <li><time class="row-date" datetime="2024-03">Mar 2024</time><span class="row-body">1st place at the Wellesley Blue Angels Pitch Competition.</span></li>
+        <li><time class="row-date" datetime="2024-01">Jan 2024</time><span class="row-body">Poster at the Harvard National Collegiate Research Conference.</span></li>
+      </ol>
     </section>
 
-    <section id="research" class="section">
-      <h2 class="section-title">Research</h2>
-      <article class="card">
-        <div class="card-content">
+    <section id="publications" class="section reveal">
+      <h2 class="section-title">Publications</h2>
+      <div class="stack">
+        <article class="card glass">
+          <p class="card-kicker">AAS/AIAA Astrodynamics Specialist Conference · July 2026</p>
+          <h3 class="card-title">DreamSat-Pose: Spacecraft Pose Estimation from Single-View 3D Reconstructions and Learned 2D-3D Feature Matching</h3>
+          <p class="card-authors"><strong>J. Uwumukiza</strong>, J. Zhao, G. Lavezzi, G. Battaglia, P. Panicucci, M. C. Wijayatunga, V. Rodriguez-Fernandez, and R. Linares.</p>
+          <p class="card-links"><a href="https://dreamsatpose.github.io/" target="_blank" rel="noopener noreferrer">Paper</a></p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">AAS/AIAA Astrodynamics Specialist Conference · August 2025</p>
           <h3 class="card-title">DreamSat-2.0: Towards a General Single-View Asteroid 3D Reconstruction</h3>
-          <p class="card-authors">J. Uwumukiza*, S. Diaz*, X. Hu*, G. Lavezzi, V. Rodriguez-Fernandez, and R. Linares. <span class="card-note">*Co-first author.</span></p>
-          <p class="card-venue">AAS/AIAA Astrodynamics Specialist Conference, August 2025.</p>
-          <p class="card-links"><a href="https://dreamsat-2-0.github.io/">Paper</a></p>
-          <p class="card-desc">Single-view 3D reconstruction pipeline for spacecraft and asteroid imagery; evaluation with 3D IoU, Chamfer Distance, and 2D perceptual metrics.</p>
-        </div>
-      </article>
+          <p class="card-authors"><strong>J. Uwumukiza*</strong>, S. Diaz*, X. Hu*, G. Lavezzi, V. Rodriguez-Fernandez, and R. Linares. <span class="card-note">*Co-first author.</span></p>
+          <p class="card-links"><a href="https://dreamsat-2-0.github.io/" target="_blank" rel="noopener noreferrer">Paper</a></p>
+        </article>
+      </div>
     </section>
 
-    <section id="creative" class="section">
+    <section id="experience" class="section reveal">
+      <h2 class="section-title">Research experience</h2>
+      <div class="stack">
+        <article class="card glass">
+          <p class="card-kicker">MIT AeroAstro · ARCLab · Cambridge, MA · Jan 2025 – May 2026</p>
+          <h3 class="card-title">Student Researcher, Computer Vision for Space</h3>
+          <p class="card-authors">with Prof. Richard Linares</p>
+          <p class="card-desc">Led DreamSat-Pose, a multimodal 6-DoF spacecraft pose-estimation pipeline; co-first author of DreamSat-2.0.</p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">MIT Media Lab · Conformable Decoders · Jan 2026 – May 2026</p>
+          <h3 class="card-title">Student Researcher, Medical Imaging &amp; Agentic AI</h3>
+          <p class="card-authors">with Prof. Canan Dagdeviren</p>
+          <p class="card-desc">Wearable-ultrasound tumor analysis with UNet++ and LLM-verified decisions (93.6% accuracy, 100% malignant recall).</p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">Microsoft AI · Redmond, WA · May 2025 – Aug 2025</p>
+          <h3 class="card-title">Software Engineer Intern</h3>
+          <p class="card-desc">LLM-powered ad-relevance evaluation over 1+ TB of data, deployed on Azure Data Factory (~85% recall, ~75% precision).</p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">NIH Human BioMolecular Atlas Program · Gainesville, FL · May 2024 – Aug 2024</p>
+          <h3 class="card-title">Computer Vision Intern</h3>
+          <p class="card-authors">with Dr. Pinaki Sarder</p>
+          <p class="card-desc">CycleGAN and Attention U-Net podocyte segmentation on histopathology whole-slide images (0.92 SSIM).</p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">Wellesley College · Sep 2023 – May 2025</p>
+          <h3 class="card-title">Computational Chemistry Research Student</h3>
+          <p class="card-authors">with Prof. Don Elmore</p>
+          <p class="card-desc">GROMACS molecular-dynamics simulations of peptide truncations, analyzed in VMD and R.</p>
+        </article>
+        <article class="card glass">
+          <p class="card-kicker">The Jackson Laboratory for Genomic Medicine · Farmington, CT</p>
+          <h3 class="card-title">Research Intern</h3>
+          <p class="card-authors">with Prof. Edison T. Liu</p>
+          <p class="card-desc">Whole-genome sequencing analysis of 30 breast cancer cell lines in R, with wet-lab validation.</p>
+        </article>
+      </div>
+
+      <h3 class="section-subtitle">Teaching</h3>
+      <ol class="rows glass">
+        <li><time class="row-date" datetime="2025-08">2025</time><span class="row-body"><strong>Teaching Assistant, Mobile App Development</strong> — Wellesley Computer Science. Supported 14 students building full-stack apps with React Native, Firebase and Expo; led weekly office hours.</span></li>
+      </ol>
+    </section>
+
+    <section id="awards" class="section reveal">
+      <h2 class="section-title">Awards &amp; fellowships</h2>
+      <ol class="rows glass">
+        <li><time class="row-date" datetime="2024-11">Nov 2024</time><span class="row-body"><strong>NIH HuBMAP Underrepresented Student Internship Extension Program</strong> — selected through a competitive NIH review for a year-long extension; $11,000 fellowship to continue machine-learning research in computational pathology.</span></li>
+        <li><time class="row-date" datetime="2024-11">Nov 2024</time><span class="row-body"><strong>Wellesley College Conference Travel Grant</strong> — competitive grant supporting the ABCRMS presentation.</span></li>
+        <li><time class="row-date" datetime="2024-08">Aug 2024</time><span class="row-body"><strong>D. E. Shaw Research Undergraduate &amp; Master's Fellowship</strong> — fully funded fellowship in computational biochemistry and scientific computing, New York.</span></li>
+        <li><time class="row-date" datetime="2024-03">Mar 2024</time><span class="row-body"><strong>Wellesley Blue Angels Pitch Competition, 1st place</strong> — Wellesley's most competitive tech venture pitch competition, judged by alumni leaders in technology, entrepreneurship and venture capital.</span></li>
+      </ol>
+    </section>
+
+    <section id="education" class="section reveal">
+      <h2 class="section-title">Education</h2>
+      <ol class="rows glass">
+        <li><span class="row-date">2022 – 2026</span><span class="row-body"><strong>Wellesley College</strong> — BA in Computer Science, Departmental Honors. Senior honors thesis on 6-DoF pose estimation of unknown spacecraft via generative 3D reconstruction. Coursework includes Artificial Intelligence, Probabilistic Foundations of Machine Learning, Theory of Computation, Foundations of Computer Systems.</span></li>
+        <li><span class="row-date">2025 – 2026</span><span class="row-body"><strong>Massachusetts Institute of Technology</strong> — cross-registration: Cryptocurrency Design and Engineering, Computer Systems Security, Undergraduate Research in Aerospace Engineering (16.UR).</span></li>
+        <li><span class="row-date">Fall 2024</span><span class="row-body"><strong>Queen Mary University of London</strong> — semester abroad: Scientific Computing, Computability &amp; Complexity and Algorithms, Semi-Structured Data Engineering.</span></li>
+      </ol>
+    </section>
+
+    <section id="creative" class="section reveal">
       <h2 class="section-title">Creative</h2>
-      <article class="card">
-        <div class="card-content">
-          <h3 class="card-title">Inyamanza n'Abana Bayo</h3>
-          <p class="card-venue">Children's book, 1st Place — Andika Rwanda National Writing Competition (2017/2018).</p>
-          <p class="card-links"><a href="https://elearning.reb.rw/pluginfile.php/11464/mod_resource/content/1/inyamanza.pdf" target="_blank" rel="noopener noreferrer">Read online</a></p>
-          <p class="card-desc">Award-winning children's book written and published at age 14.</p>
-        </div>
+      <article class="card glass">
+        <p class="card-kicker">Children's book · 1st place, Andika Rwanda National Writing Competition 2017/2018</p>
+        <h3 class="card-title">Inyamanza n'Abana Bayo</h3>
+        <p class="card-desc">Award-winning children's book written and published at age 14.</p>
+        <p class="card-links"><a href="https://elearning.reb.rw/pluginfile.php/11464/mod_resource/content/1/inyamanza.pdf" target="_blank" rel="noopener noreferrer">Read online</a></p>
       </article>
+      <p class="aside">Also: Wellesley Computer Science Club · WC Blue Notes a cappella · Wellesley Africans Association · Harvard Women Founders Circle · Code2040 Fellow.</p>
     </section>
   </main>
 
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Josiane Uwumukiza</p>
+  </footer>
+
   <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+  <script src="js/scene.js"></script>
 </body>
 </html>
